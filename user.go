@@ -6,6 +6,7 @@ import (
 	"crypto/md5"
 
 	"github.com/briand787b/validation"
+	"github.com/briand787b/idGen"
 )
 
 
@@ -64,7 +65,7 @@ func NewUser(username, email, password string) (User, error) {
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), hashCost)
 
 	user.HashedPassword = string(hashedPassword)
-	user.ID = GenerateID("usr", userIDLength)
+	user.ID = idGen.GenerateID("usr", userIDLength)
 
 	return user, err
 }

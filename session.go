@@ -4,6 +4,8 @@ import (
 	"time"
 	"net/http"
 	"net/url"
+
+	"github.com/briand787b/idGen"
 )
 
 type Session struct {
@@ -23,7 +25,7 @@ func NewSession(w http.ResponseWriter) *Session {
 	expiry := time.Now().Add(sessionLength)
 
 	session := &Session{
-		ID: 		GenerateID("sess", sessionIDLength),
+		ID: 		idGen.GenerateID("sess", sessionIDLength),
 		Expiry: 	expiry,
 	}
 
